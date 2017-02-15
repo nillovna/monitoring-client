@@ -6,4 +6,4 @@
 {% endfor %}
   labels:
     job: {{ client }}
-    client: {{ client }}
+    env: {{ client }}
