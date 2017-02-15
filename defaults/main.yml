@@ -1,8 +1,0 @@
-file_sd_conf:
-  - targets:
-  {% for srv in groups['monitoring'] %}
-      - "{{ srv }}:9100"
-  {% endfor %}
-    labels:
-      job: {{ job }}
-      client: {{ client }}

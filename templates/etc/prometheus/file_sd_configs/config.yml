@@ -1,2 +1,9 @@
-# {{ ansible_managed }}
-{{ file_sd_conf | to_nice_yaml }}
+- targets:
+{% for srv in groups['monitoring'] %}
+  {% for prt in hostvars[srv].ports %}
+    - "{{ srv }}:{{ prt }}"
+  {% endfor%}
+{% endfor %}
+  labels:
+    job: {{ client }}
+    client: {{ client }}
