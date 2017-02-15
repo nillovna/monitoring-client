@@ -1,6 +1,6 @@
 - targets:
 {% for srv in groups['monitoring'] %}
-  {% for prt in hostvars[srv].ports %}
+  {% for prt in hostvars[srv].exporter_ports %}
     - "{{ srv }}:{{ prt }}"
   {% endfor%}
 {% endfor %}

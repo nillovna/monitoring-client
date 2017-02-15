@@ -17,9 +17,9 @@
         lineinfile:
             state: present
             dest: /etc/hosts
-            line: "{{ hostvars[item].ext_ip }} {{ item }}"
+            line: "{{ hostvars[item].ansible_host }} {{ item }}"
             regexp: '.*{{ item }}$'
-        when: hostvars[item].int_ip is not defined and hostvars[item].ext_ip is defined
+        when: hostvars[item].int_ip is not defined and hostvars[item].ansible_host is defined
         with_items:
             - "{{ groups['monitoring'] }}"        
         tags: hosts
