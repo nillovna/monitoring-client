@@ -1,9 +1,9 @@
 - targets:
 {% for srv in groups['monitoring'] %}
-  {% for prt in hostvars[srv].exporter_ports %}
+{% for prt in hostvars[srv].exporter_ports %}
     - "{{ srv }}:{{ prt }}"
-  {% endfor%}
 {% endfor %}
-labels:
+{% endfor %}
+  labels:
     job: {{ client }}
     client: {{ client }}
