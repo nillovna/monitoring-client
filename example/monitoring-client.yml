@@ -1,0 +1,5 @@
+- hosts: prometheus_host
+  become: true
+  become_method: sudo
+  roles:
+      - role: monitoring-client

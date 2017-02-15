@@ -1,0 +1,25 @@
+      - name: put prometeus config files
+        template: dest=/etc/prometheus/file_sd_configs/{{ client }}_config.yml src=etc/prometheus/file_sd_configs/config.yml
+        tags: conf
+
+      - name: edit /etc/hosts
+        lineinfile:
+            state: present
+            dest: /etc/hosts
+            line: "{{ hostvars[item].int_ip }} {{ item }}"
+            regexp: '.*{{ item }}$'
+        when: hostvars[item].int_ip is defined
+        with_items:
+            - "{{ groups['monitoring'] }}"
+        tags: hosts
+            
+      - name: edit /etc/hosts
+        lineinfile:
+            state: present
+            dest: /etc/hosts
+            line: "{{ hostvars[item].ext_ip }} {{ item }}"
+            regexp: '.*{{ item }}$'
+        when: hostvars[item].int_ip is not defined and hostvars[item].ext_ip is defined
+        with_items:
+            - "{{ groups['monitoring'] }}"        
+        tags: hosts
