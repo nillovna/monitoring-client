@@ -5,5 +5,5 @@
   {% endfor%}
 {% endfor %}
   labels:
-    job: {{ client }}
-    client: {{ client }}
+      job: {{ client }}
+      client: {{ client }}
