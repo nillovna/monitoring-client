@@ -4,6 +4,6 @@
     - "{{ srv }}:{{ prt }}"
   {% endfor%}
 {% endfor %}
-  labels:
+labels:
     job: {{ client }}
     client: {{ client }}
