@@ -5,13 +5,13 @@ Role added new config with client's name to ```/etc/prometheus/file_sd_configs``
 Requirements
 ------------
 
-1) There is should be group ```monitoring``` with hosts called by names and with vars ```int_it```(internal ip) and ``` exporter_ports ``` in ```inventory```
+1) group ```monitoring``` with hosts called by names and with vars ```int_it```(internal ip) and ``` exporter_ports ``` should be  in ```inventory```
 ```
 [monitoring]
 test ansible_host=<host_external_ip> int_ip=<host_internal_ip> exporter_ports='["<node_exporter_port>", "<other_exporter_port>"]'
 ```
 
-2) In ```/etc/prometheus/prometheus.yml``` should be smth like this
+2) Smth like this  should be in ```/etc/prometheus/prometheus.yml```
 ```
         file_sd_configs:
             - files:
